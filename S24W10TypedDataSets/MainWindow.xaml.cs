@@ -73,5 +73,18 @@ namespace S24W10TypedDataSets
             LoadProducts();
             MessageBox.Show("New product added");
         }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            int id = int.Parse(txtId.Text);
+            string name = txtName.Text;
+            decimal price = decimal.Parse(txtPrice.Text);
+            short quantity = short.Parse(txtQuantity.Text);
+
+            adpProds.Update(name, price, quantity, id);
+
+            LoadProducts();
+            MessageBox.Show("Product updated");
+        }
     }
 }
