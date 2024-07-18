@@ -86,5 +86,15 @@ namespace S24W10TypedDataSets
             LoadProducts();
             MessageBox.Show("Product updated");
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            int id = int.Parse(txtId.Text);
+            
+            adpProds.Delete(id);
+
+            LoadProducts();
+            MessageBox.Show("Product deleted");
+        }
     }
 }
