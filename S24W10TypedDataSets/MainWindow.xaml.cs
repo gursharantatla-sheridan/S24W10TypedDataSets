@@ -96,5 +96,13 @@ namespace S24W10TypedDataSets
             LoadProducts();
             MessageBox.Show("Product deleted");
         }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string name = txtName.Text;
+
+            tblProds = adpProds.GeProductByName(name);
+            grdProducts.ItemsSource = tblProds;
+        }
     }
 }
