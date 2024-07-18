@@ -125,5 +125,10 @@ namespace S24W10TypedDataSets
             tblProdsCats = adpProdsCats.GetProductsByCatId(catId);
             grdProducts.ItemsSource = tblProdsCats;
         }
+
+        private void btnClearData_Click(object sender, RoutedEventArgs e)
+        {
+            cmbCategories.ItemsSource = null;
+        }
     }
 }
