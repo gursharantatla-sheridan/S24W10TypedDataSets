@@ -25,6 +25,7 @@ namespace S24W10TypedDataSets
         public MainWindow()
         {
             InitializeComponent();
+            LoadProducts();
         }
 
         private void LoadProducts()
@@ -59,6 +60,18 @@ namespace S24W10TypedDataSets
                 txtName.Text = txtPrice.Text = txtQuantity.Text = "";
                 MessageBox.Show("Invalid ID. Please try again.");
             }
+        }
+
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            string name = txtName.Text;
+            decimal price = decimal.Parse(txtPrice.Text);
+            short quantity = short.Parse(txtQuantity.Text);
+
+            adpProds.Insert(name, price, quantity);
+
+            LoadProducts();
+            MessageBox.Show("New product added");
         }
     }
 }
