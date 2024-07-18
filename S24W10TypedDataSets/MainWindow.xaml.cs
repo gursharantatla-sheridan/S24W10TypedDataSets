@@ -19,10 +19,12 @@ namespace S24W10TypedDataSets
         // table adapter
         NorthwindDataSetTableAdapters.ProductsTableAdapter adpProds = new NorthwindDataSetTableAdapters.ProductsTableAdapter();
         NorthwindDataSetTableAdapters.CategoriesTableAdapter adpCats = new NorthwindDataSetTableAdapters.CategoriesTableAdapter();
+        NorthwindDataSetTableAdapters.ProductsWithCategoriesTableAdapter adpProdsCats = new NorthwindDataSetTableAdapters.ProductsWithCategoriesTableAdapter();
 
         // data table
         NorthwindDataSet.ProductsDataTable tblProds = new NorthwindDataSet.ProductsDataTable();
         NorthwindDataSet.CategoriesDataTable tblCats = new NorthwindDataSet.CategoriesDataTable();
+        NorthwindDataSet.ProductsWithCategoriesDataTable tblProdsCats = new NorthwindDataSet.ProductsWithCategoriesDataTable();
 
         public MainWindow()
         {
@@ -114,6 +116,14 @@ namespace S24W10TypedDataSets
             cmbCategories.ItemsSource = tblCats;
             cmbCategories.DisplayMemberPath = "CategoryName";
             cmbCategories.SelectedValuePath = "CategoryID";
+        }
+
+        private void cmbCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int catId = (int)cmbCategories.SelectedValue;
+
+            tblProdsCats = adpProdsCats.GetProductsByCatId(catId);
+            grdProducts.ItemsSource = tblProdsCats;
         }
     }
 }
