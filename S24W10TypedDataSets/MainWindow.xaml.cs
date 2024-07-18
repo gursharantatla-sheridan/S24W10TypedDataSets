@@ -42,5 +42,23 @@ namespace S24W10TypedDataSets
         {
             LoadProducts();
         }
+
+        private void btnFind_Click(object sender, RoutedEventArgs e)
+        {
+            int id = int.Parse(txtId.Text);
+            var row = tblProds.FindByProductID(id);
+
+            if (row != null)
+            {
+                txtName.Text = row.ProductName;
+                txtPrice.Text = row.UnitPrice.ToString();
+                txtQuantity.Text = row.UnitsInStock.ToString();
+            }
+            else
+            {
+                txtName.Text = txtPrice.Text = txtQuantity.Text = "";
+                MessageBox.Show("Invalid ID. Please try again.");
+            }
+        }
     }
 }
