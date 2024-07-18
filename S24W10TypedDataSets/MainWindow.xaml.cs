@@ -16,9 +16,31 @@ namespace S24W10TypedDataSets
     /// </summary>
     public partial class MainWindow : Window
     {
+        // table adapter
+        NorthwindDataSetTableAdapters.ProductsTableAdapter adpProds = new NorthwindDataSetTableAdapters.ProductsTableAdapter();
+
+        // data table
+        NorthwindDataSet.ProductsDataTable tblProds = new NorthwindDataSet.ProductsDataTable();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void LoadProducts()
+        {
+            // Fill method
+            //adpProds.Fill(tblProds);
+
+            // Get method
+            tblProds = adpProds.GetProducts();
+
+            grdProducts.ItemsSource = tblProds;
+        }
+
+        private void btnLoadAllProducts_Click(object sender, RoutedEventArgs e)
+        {
+            LoadProducts();
         }
     }
 }
